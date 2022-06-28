@@ -8,6 +8,11 @@ use App\Models\Client;
 class ClientRepository implements ClientRepositoryContract
 {
 
+    /**
+     * @param bool|int $paginate
+     * @param bool|int $limit
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+     */
     public function getAll(bool|int $paginate = false, bool|int $limit = false)
     {
         $clients = Client::query();
@@ -25,6 +30,10 @@ class ClientRepository implements ClientRepositoryContract
         return $clients;
     }
 
+    /**
+     * @param int $id
+     * @return mixed
+     */
     public function find(int $id)
     {
         return Client::find($id);
@@ -49,12 +58,20 @@ class ClientRepository implements ClientRepositoryContract
         }
     }
 
+    /**
+     * @param int $id
+     * @return void
+     */
     public function delete(int $id)
     {
         $client = $this->find($id);
         $client->delete();
     }
 
+    /**
+     * @param int $id
+     * @return mixed
+     */
     public function getClientWithCompanies(int $id)
     {
         return Client::where('id',$id)->with('company')->get();

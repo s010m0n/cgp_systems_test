@@ -14,6 +14,10 @@ class CompanyApiApiService implements CompanyApiServiceContract
     }
 
 
+    /**
+     * @param int|bool $pagination
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
     public function getCompanyCollection(int|bool $pagination)
     {
         $companies = $this->companyRepository->getAll($pagination,false);

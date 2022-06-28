@@ -50,9 +50,9 @@
                             @elseif(request()->routeIs('company.index'))
                                 Companies
                             @elseif(request()->routeIs('company.show'))
-                                #{{$company->id}}
+                                Company #{{$company->id}}
                             @elseif(request()->routeIs('client.show'))
-                                #{{$client->id}}
+                                Client #{{$client->id}}
                             @elseif(request()->routeIs('company.edit'))
                                 Edit Company
                             @elseif(request()->routeIs('client.edit'))

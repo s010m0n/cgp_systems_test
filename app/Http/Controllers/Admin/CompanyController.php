@@ -13,6 +13,9 @@ class CompanyController extends Controller
     {
     }
 
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function index(){
         $companies = $this->companyService->getAllCompanies(20,false);
 
@@ -21,6 +24,10 @@ class CompanyController extends Controller
         ]);
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function show($id){
         $company = $this->companyService->getCompany($id);
 
@@ -29,10 +36,17 @@ class CompanyController extends Controller
         ]);
     }
 
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function create(){
         return view('admin.company.create');
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function edit($id){
         $company = $this->companyService->getCompany($id);
 
@@ -41,18 +55,31 @@ class CompanyController extends Controller
         ]);
     }
 
+    /**
+     * @param StoreRequest $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function store(StoreRequest $request){
         $this->companyService->createOrUpdate($request->validated(), false);
 
         return redirect(route('company.index'));
     }
 
+    /**
+     * @param UpdateRequest $request
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function update(UpdateRequest $request, $id){
         $this->companyService->createOrUpdate($request->validated(), $id);
 
         return redirect(route('company.index'));
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function delete($id){
         $this->companyService->deleteCompany($id);
 

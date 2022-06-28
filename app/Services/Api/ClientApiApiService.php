@@ -15,6 +15,10 @@ class ClientApiApiService implements ClientApiServiceContract
     }
 
 
+    /**
+     * @param bool|int $pagination
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
     public function getClientCollection(bool|int $pagination)
     {
         $clients = $this->clientRepository->getAll($pagination, false);
@@ -23,6 +27,10 @@ class ClientApiApiService implements ClientApiServiceContract
 
     }
 
+    /**
+     * @param int $client
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
     public function getClientCompaniesCollection(int $client)
     {
         $companies = $this->clientRepository->getClientWithCompanies($client);

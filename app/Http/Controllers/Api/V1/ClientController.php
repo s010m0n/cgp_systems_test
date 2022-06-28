@@ -13,10 +13,18 @@ class ClientController extends Controller
     {
     }
 
+    /**
+     * @param GetClientCompaniesRequest $request
+     * @return mixed
+     */
     public function get_client_companies(GetClientCompaniesRequest $request){
         return $this->clientApiService->getClientCompaniesCollection($request->validated()['id']);
     }
 
+    /**
+     * @param GetClientsRequest $request
+     * @return mixed
+     */
     public function get_clients(GetClientsRequest $request){
         return $this->clientApiService->getClientCollection(isset($request->validated()['pagination']) ? $request->validated()['pagination'] : false);
     }

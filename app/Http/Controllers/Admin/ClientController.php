@@ -13,6 +13,9 @@ class ClientController extends Controller
     {
     }
 
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function index(){
         $clients =  $this->clientService->getAllClient(20,false);
 
@@ -21,6 +24,10 @@ class ClientController extends Controller
         ]);
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function show($id){
         $client = $this->clientService->getClient($id);
 
@@ -29,16 +36,27 @@ class ClientController extends Controller
         ]);
     }
 
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function create(){
         return view('admin.client.create');
     }
 
+    /**
+     * @param StoreRequest $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function store(StoreRequest $request){
         $this->clientService->createOrUpdate($request->validated(), false);
 
         return redirect(route('client.index'));
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function edit($id){
         $client = $this->clientService->getClient($id);
 
@@ -47,12 +65,21 @@ class ClientController extends Controller
         ]);
     }
 
+    /**
+     * @param UpdateRequest $request
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function update(UpdateRequest $request, $id){
         $this->clientService->createOrUpdate($request->validated(), $id);
 
         return redirect(route('client.index'));
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function delete($id){
         $this->clientService->deleteClient($id);
 

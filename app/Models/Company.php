@@ -14,6 +14,9 @@ class Company extends Model
       'desc'
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function client()
     {
         return $this->belongsToMany(Client::class, 'company_client');

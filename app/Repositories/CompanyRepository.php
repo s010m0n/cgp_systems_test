@@ -8,6 +8,11 @@ use App\Models\Company;
 class CompanyRepository implements CompanyRepositoryContract
 {
 
+    /**
+     * @param bool|int $paginate
+     * @param bool|int $limit
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+     */
     public function getAll(bool|int $paginate = false, bool|int $limit = false)
     {
         $company = Company::query();
@@ -25,6 +30,10 @@ class CompanyRepository implements CompanyRepositoryContract
         return $company;
     }
 
+    /**
+     * @param int $id
+     * @return mixed
+     */
     public function find(int $id)
     {
         return Company::find($id);
@@ -47,6 +56,10 @@ class CompanyRepository implements CompanyRepositoryContract
         }
     }
 
+    /**
+     * @param int $id
+     * @return void
+     */
     public function delete(int $id)
     {
         $company = $this->find($id);
