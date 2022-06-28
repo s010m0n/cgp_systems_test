@@ -10,7 +10,7 @@
     </td>
     <td>
         <a>
-            {{$company->desc}}
+            {{Str::limit($company->desc,70)}}
         </a>
         <br>
     </td>
