@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Api\Auth\AuthController;
+use App\Http\Controllers\Api\V1\ClientController;
+use App\Http\Controllers\Api\V1\CompanyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,5 +26,11 @@ Route::group(['namespace' => 'Api'], function () {
         Route::post('register', [AuthController::class,'register']);
         Route::post('login', [AuthController::class,'login']);
         Route::post('logout', [AuthController::class,'logout'])->middleware('auth:api');
+    });
+
+    Route::group(['namespace' => 'V1', 'prefix' => 'V1', 'middleware' => 'auth:api'], function () {
+        Route::post('get_companies', [CompanyController::class, 'get_companies']);
+        Route::post('get_clients', [ClientController::class, 'get_clients']);
+        Route::post('get_client_companies', [ClientController::class, 'get_client_companies']);
     });
 });

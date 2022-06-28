@@ -2,6 +2,8 @@
 
 namespace App\Contracts\Repositories;
 
+use phpseclib3\System\SSH\Agent\Identity;
+
 interface ClientRepositoryContract
 {
 
@@ -12,5 +14,7 @@ interface ClientRepositoryContract
     public function createOrUpdate(array $request, bool|int $client = false);
 
     public function delete(int $id);
+
+    public function getClientWithCompanies(int $id);
 
 }

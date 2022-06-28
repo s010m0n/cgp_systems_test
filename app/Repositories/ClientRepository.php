@@ -54,4 +54,9 @@ class ClientRepository implements ClientRepositoryContract
         $client = $this->find($id);
         $client->delete();
     }
+
+    public function getClientWithCompanies(int $id)
+    {
+        return Client::where('id',$id)->with('company')->get();
+    }
 }

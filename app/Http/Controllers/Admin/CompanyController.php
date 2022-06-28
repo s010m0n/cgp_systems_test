@@ -14,7 +14,7 @@ class CompanyController extends Controller
     }
 
     public function index(){
-        $companies = $this->companyService->getAllCompanies(12,false);
+        $companies = $this->companyService->getAllCompanies(20,false);
 
         return view('admin.company.index', [
             'companies' => $companies,
@@ -35,10 +35,9 @@ class CompanyController extends Controller
 
     public function edit($id){
         $company = $this->companyService->getCompany($id);
-        $clients = $this->companyService->getClientIds();
+
         return view('admin.company.edit',[
             'company' => $company,
-            'clients_ids' => $clients
         ]);
     }
 

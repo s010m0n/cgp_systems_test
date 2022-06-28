@@ -14,7 +14,7 @@ class ClientController extends Controller
     }
 
     public function index(){
-        $clients =  $this->clientService->getAllClient(12,false);
+        $clients =  $this->clientService->getAllClient(20,false);
 
         return view('admin.client.index', [
            'clients' => $clients,

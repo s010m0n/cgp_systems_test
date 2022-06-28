@@ -44,13 +44,31 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Dashboard</h1>
+                        <h1 class="m-0">
+                            @if(request()->routeIs('client.index'))
+                                Clients
+                            @elseif(request()->routeIs('company.index'))
+                                Companies
+                            @elseif(request()->routeIs('company.show'))
+                                #{{$company->id}}
+                            @elseif(request()->routeIs('client.show'))
+                                #{{$client->id}}
+                            @elseif(request()->routeIs('company.edit'))
+                                Edit Company
+                            @elseif(request()->routeIs('client.edit'))
+                                Edit Client
+                            @elseif(request()->routeIs('company.create'))
+                                Create Company
+                            @elseif(request()->routeIs('client.create'))
+                                Create Company
+                            @endif
+                        </h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard v1</li>
-                        </ol>
+                        <form class="float-sm-right"  method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button  type="submit" class="btn btn-danger">Logout</button>
+                        </form>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->

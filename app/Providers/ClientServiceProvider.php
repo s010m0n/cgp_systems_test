@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Contracts\Repositories\ClientRepositoryContract;
+use App\Contracts\Services\Api\ClientApiServiceContract;
 use App\Contracts\Services\ClientServiceContract;
 use App\Repositories\ClientRepository;
+use App\Services\Api\ClientApiApiService;
 use App\Services\ClientService;
 use Illuminate\Support\ServiceProvider;
 
@@ -31,6 +33,7 @@ class ClientServiceProvider extends ServiceProvider
     }
 
     private function registerContracts(){
+        $this->app->singleton(ClientApiServiceContract::class, ClientApiApiService::class);
         $this->app->singleton(ClientServiceContract::class, ClientService::class);
         $this->app->singleton(ClientRepositoryContract::class, ClientRepository::class);
     }
