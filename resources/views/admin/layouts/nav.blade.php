@@ -12,11 +12,9 @@
             <a href="https://www.linkedin.com/in/%D0%BE%D0%BB%D0%B5%D0%B3-%D1%81%D0%BE%D0%BB%D0%BE%D0%B2-%D1%8F%D0%BD-955b99171/" class="nav-link">Contact</a>
         </li>
     </ul>
-
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
         <!-- Navbar Search -->
-
     </ul>
 </nav>
 <!-- /.navbar -->

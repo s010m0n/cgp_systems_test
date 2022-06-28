@@ -7,7 +7,6 @@
                         #{{$client->id}}
                     @endisset
                 </h3>
-
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                         <i class="fas fa-minus"></i>
@@ -27,7 +26,6 @@
                     <label for="inputName">Email</label>
                     <input name="email" type="email" id="inputName" class="form-control" @isset($client->email)value="{{$client->email}}"@endisset>
                 </div>
-
             </div>
         </div>
     </div>
